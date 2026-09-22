@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
+      rel="stylesheet">
+</head>
+
+<body style="background-image:url('{%static './weather2.jpg'%}');background-repeat:no-repeat;background-size:100%;">
+     <div class="backside"style="background-image:url('{%static './weather3.jpeg'%}');background-repeat:no-repeat;background-size:100%;">
+    <div class="back">
+
+        <div class="container">
+
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="search">
+                    <input type="text" name="city" placeholder="Enter city">
+                    <button type="submit">Search</button>
+                </div>
+            </form>
+
+            <div class="condition">
+                <h2>{{ temp }}°C</h2>
+                <h3>{{ city }}</h3>
+                <p>{{ description }}</p>
+            </div>
+
+            <div class="img">
+
+                <div class="icon">
+                    <p>
+                        <img src="{% static 'weather.jpeg' %}" title="weather forecast icons">
+                    </p>
+                </div>
+
+                {% comment %} <div class="icon2">
+                    <p>
+                        <img src="{% static 'weather.jpeg' %}" title="weather forecast icons">
+                    </p>
+                </div> {% endcomment %}
+
+            </div>
+
+            <div class="date">
+                <p>{{ day }}</p>
+            </div>
+        </div>
+        </div>
+
+    </div>
+
+    <div class="last">
+    </div>
+
+</body>
+</html>
